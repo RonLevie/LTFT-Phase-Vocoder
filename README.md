@@ -34,17 +34,21 @@ We first consider an outtake from the iconic song [Through the Fire and Flames](
 We compute the LTFT phase vocoder
 ```
 [DD FDD]=audioread('Dragon1.mp4');
-Dx4LTFT(:,1) = QuasiRandomVocoder_wrap2_par6( DD(:,1)',2,15,2000,60,15,6,1.5);
-Dx4LTFT(:,2) = QuasiRandomVocoder_wrap2_par6( DD(:,2)',2,15,2000,60,15,6,1.5);
+Dx4LTFT(:,1) = LTFTVocoder(DD(:,1)',5,15,2000,60,15,6,1.5);
+Dx4LTFT(:,2) = LTFTVocoder(DD(:,2)',5,15,2000,60,15,6,1.5);
 audiowrite('Dx4LTFT.mp4',Dx4LTFT,FDD);
 ```
+The resulting audio file: [Dx4LTFT.mp4](/Dx4LTFT.mp4)
+
 To compare with the STFT phase vocoder, we compute
 ```
-Dx4STFT(:,1)  = VocoderClassic( DD(:,1) , 5, 20,2000 );
-Dx4STFT(:,1)  = VocoderClassic( DD(:,2) , 5, 20,2000 );
+Dx4STFT(:,1)  = VocoderClassic(DD(:,1),5,5,2000);
+Dx4STFT(:,1)  = VocoderClassic(DD(:,2),5,5,2000);
 audiowrite('Dx4STFT.mp4',Dx4STFT,FDD);
 ```
-We note that by trial and error we found that a window size of 2000 samples gives a good balance between capturing the timber of the guitars and vocals, and avoiding as much phasiness as possible.
+The resulting audio file: [Dx4STFT.mp4](/Dx4LTFT.mp4)
+
+We note that by trial and error on the STFT phse vocoder we found that a window size of 2000 samples gives a good balance between capturing the timber of the guitars and vocals, and avoiding as much phasiness as possible. The LTFT phase vocoder is less sensitive to parameter choice.
 
 ### Usage of LTFT phase vocoder
 ```
