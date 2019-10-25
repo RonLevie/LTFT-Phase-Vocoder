@@ -23,33 +23,7 @@ Instead of considering the 3D space of all LTFT atoms, the LTFT phase vocoder me
 
 LTFT phase vocoder is beneficial for processing polyphonic audio signals, since its 3D feature space is well equipped for represent a range of audio features, from transient events to harmonic features.
 
-## Examples and usage
-### Audio examples
-To showcase the LTFT phase vocoder, we consider outtakes from songs by the power metal band [DragonForce](https://en.wikipedia.org/wiki/DragonForce). The overall sound of the band, and specifically the electric guitars with distortion, together with the lyrics and fast paced drumming, constitutes highly polyphonic audio signals. LTFT phase vocoder can accommodate the different audio features simultaneously via the *oscillation* axis. Moreover, since LTFT is based on wavelet atoms, which are more localized in time than STFT atoms, [phasiness](https://www.researchgate.net/publication/3714372_Phase-vocoder_about_this_phasiness_business) is alleviated with respect to classical phase vocoder.   
-
-We first consider an outtake from the iconic song [Through the Fire and Flames](https://www.youtube.com/watch?v=0jgrCKhxE1s).
-
-[Audio: Through the Fire and Flames extract](/Dragon1.mp4)
-
-We compute the LTFT phase vocoder
-```
-[DD FDD]=audioread('Dragon1.mp4');
-Dx4LTFT(:,1) = LTFTVocoder(DD(:,1)',5,15,2000,60,15,6,1.5);
-Dx4LTFT(:,2) = LTFTVocoder(DD(:,2)',5,15,2000,60,15,6,1.5);
-audiowrite('Dx4LTFT.mp4',Dx4LTFT,FDD);
-```
-The resulting audio file: [Dx4LTFT.mp4](/Dx4LTFT.mp4)
-
-To compare with the STFT phase vocoder, we compute
-```
-Dx4STFT(:,1)  = VocoderClassic(DD(:,1),5,5,2000);
-Dx4STFT(:,1)  = VocoderClassic(DD(:,2),5,5,2000);
-audiowrite('Dx4STFT.mp4',Dx4STFT,FDD);
-```
-The resulting audio file: [Dx4STFT.mp4](/Dx4STFT.mp4)
-
-We note that by trial and error on the STFT phse vocoder we found that a window size of 2000 samples gives a good balance between capturing the timber of the guitars and vocals, and avoiding as much phasiness as possible. The LTFT phase vocoder is less sensitive to parameter choice.
-
+## Usage
 ### Usage of LTFT phase vocoder
 ```
 out = LTFTVocoder(s,dilate,osci,max_supp,min_supp,range,overlap,alpha,quadrature_method)
@@ -92,4 +66,34 @@ Based on code from the book [Udo Zolzer. *DAFX: Digital Audio Effects, Second ed
 **n**: analysis step size (lower **n** means more overlap between the windows).
 
 **s_win**: window time support.
+
+## Audio examples
+To showcase the LTFT phase vocoder, we consider outtakes from songs by the power metal band [DragonForce](https://en.wikipedia.org/wiki/DragonForce). The overall sound of the band, and specifically the electric guitars with distortion, together with the lyrics and fast paced drumming, constitutes highly polyphonic audio signals. LTFT phase vocoder can accommodate the different audio features simultaneously via the *oscillation* axis. Moreover, since LTFT is based on wavelet atoms, which are more localized in time than STFT atoms, [phasiness](https://www.researchgate.net/publication/3714372_Phase-vocoder_about_this_phasiness_business) is alleviated with respect to classical phase vocoder.   
+
+We first consider an outtake from the iconic song [Through the Fire and Flames](https://www.youtube.com/watch?v=0jgrCKhxE1s).
+
+[Audio: Through the Fire and Flames extract](/Dragon1.mp4)
+
+We slow down this audio signal by 5.
+
+We compute the LTFT phase vocoder
+```
+[DD FDD]=audioread('Dragon1.mp4');
+Dx5LTFT(:,1) = LTFTVocoder(DD(:,1)',5,15,2000,60,15,6,1.5);
+Dx5LTFT(:,2) = LTFTVocoder(DD(:,2)',5,15,2000,60,15,6,1.5);
+audiowrite('Dx5LTFT.mp4',Dx4LTFT,FDD);
+```
+The resulting audio file: [Dx5LTFT.mp4](/Dx5LTFT.mp4)
+
+To compare with the STFT phase vocoder, we compute
+```
+Dx5STFT(:,1)  = VocoderClassic(DD(:,1),5,5,2000);
+Dx5STFT(:,1)  = VocoderClassic(DD(:,2),5,5,2000);
+audiowrite('Dx5STFT.mp4',Dx4STFT,FDD);
+```
+The resulting audio file: [Dx5STFT.mp4](/Dx5STFT.mp4)
+
+We note that by trial and error on the STFT phse vocoder we found that a window size of 2000 samples gives a good balance between capturing the timber of the guitars and vocals, and avoiding as much phasiness as possible. The LTFT phase vocoder is less sensitive to parameter choice.
+
+We then consider an extract from the song [Ashes of the Dawn](https://www.youtube.com/watch?v=DFeBkHJUZDg).
 
