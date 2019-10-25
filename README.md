@@ -29,7 +29,7 @@ To showcase the LTFT phase vocoder, we consider outtakes from songs by the power
 
 We first consider an outtake from the iconic song [Through the Fire and Flames](https://www.youtube.com/watch?v=0jgrCKhxE1s).
 
-[Through the Fire and Flames extract](/Dshort.wav)
+[Through the Fire and Flames extract](/Dragon1.mp4)
 
 ### Usage
 ```
