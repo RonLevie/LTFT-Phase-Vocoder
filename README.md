@@ -31,6 +31,20 @@ We first consider an outtake from the iconic song [Through the Fire and Flames](
 
 [Audio: Through the Fire and Flames extract](/Dragon1.mp4)
 
+We compute the LTFT phase vocoder
+```
+[DD FDD]=audioread('Dragon1.mp4');
+Dx4LTFT(:,1) = QuasiRandomVocoder_wrap2_par6( DD(:,1)',2,15,2000,60,15,6,1.5);
+Dx4LTFT(:,2) = QuasiRandomVocoder_wrap2_par6( DD(:,2)',2,15,2000,60,15,6,1.5);
+audiowrite('Dx4LTFT.mp4',Dx4LTFT,FDD);
+```
+To compare with the STFT phase vocoder, we compute
+```
+Dx4STFT(:,1)  = VocoderClassic( DD(:,1) , 5, 20,2000 );
+Dx4STFT(:,1)  = VocoderClassic( DD(:,2) , 5, 20,2000 );
+audiowrite('Dx4STFT.mp4',Dx4STFT,FDD);
+```
+We note that by trial and error we found that a window size of 2000 samples gives a good balance between capturing the timber of the guitars and vocals, and avoiding as much phasiness as possible.
 
 ### Usage of LTFT phase vocoder
 ```
@@ -63,7 +77,7 @@ Computes the quasi Monte-Carlo or Monte-Carlo integer time stretching phase voco
 ### Usage of classical phase vocoder
 For comparison with the classical integer time dilation phase vocoder, based on the STFT, use
 ```
-DAFx_out = VocoderClassic(s,dilate,n,s_win )
+DAFx_out = VocoderClassic(s,dilate,n,s_win)
 ```
 Based on code from the book [Udo Zolzer. *DAFX: Digital Audio Effects, Second edition*. Wiley 2011](https://onlinelibrary.wiley.com/doi/book/10.1002/9781119991298).
 
