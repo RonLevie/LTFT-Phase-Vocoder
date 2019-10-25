@@ -68,7 +68,7 @@ Based on code from the book [Udo Zolzer. *DAFX: Digital Audio Effects, Second ed
 **s_win**: window time support.
 
 ## Audio examples
-To showcase the LTFT phase vocoder, we consider outtakes from songs by the power metal band [DragonForce](https://en.wikipedia.org/wiki/DragonForce). The overall sound of the band, and specifically the electric guitars with distortion, together with the lyrics and fast paced drumming, constitutes highly polyphonic audio signals. LTFT phase vocoder can accommodate the different audio features simultaneously via the *oscillation* axis. Moreover, since LTFT is based on wavelet atoms, which are more localized in time than STFT atoms, [phasiness](https://www.researchgate.net/publication/3714372_Phase-vocoder_about_this_phasiness_business) is alleviated with respect to classical phase vocoder.   
+To showcase the LTFT phase vocoder, we consider outtakes from songs by the power metal band [DragonForce](https://en.wikipedia.org/wiki/DragonForce). The overall sound of the band, and specifically the electric guitars with distortion, together with the bass guitar, lyrics, and fast paced drumming, constitutes highly polyphonic audio signals. LTFT phase vocoder can accommodate the different audio features simultaneously via the *oscillation* axis. Moreover, since LTFT is based on wavelet atoms, which are more localized in time than STFT atoms, [phasiness](https://www.researchgate.net/publication/3714372_Phase-vocoder_about_this_phasiness_business) is alleviated with respect to classical phase vocoder.   
 
 We first consider an outtake from the iconic song [Through the Fire and Flames](https://www.youtube.com/watch?v=0jgrCKhxE1s).
 
