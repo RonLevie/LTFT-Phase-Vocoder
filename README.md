@@ -29,10 +29,10 @@ To showcase the LTFT phase vocoder, we consider outtakes from songs by the power
 
 We first consider an outtake from the iconic song [Through the Fire and Flames](https://www.youtube.com/watch?v=0jgrCKhxE1s).
 
-[Through the Fire and Flames extract](/Dragon1.mp4)
-[Through the Fire and Flames extract](/Dshort.wav)
+[Audio: Through the Fire and Flames extract](/Dragon1.mp4)
 
-### Usage
+
+### Usage of LTFT phase vocoder
 ```
 out = LTFTVocoder(s,dilate,osci,max_supp,min_supp,range,overlap,alpha,quadrature_method)
 ```
@@ -59,4 +59,19 @@ Computes the quasi Monte-Carlo or Monte-Carlo integer time stretching phase voco
 **alpha**: controls the distribution of supports. The greater **alpha** is, the more likely it is to pick small supports.
 
 **quadrature_method**: a string, if equal to 'MonteCarlo' the quadrature points are random, else the quadrature points are quasi-random.
+
+### Usage of classical phase vocoder
+For comparison with the classical integer time dilation phase vocoder, based on the STFT, use
+```
+DAFx_out = VocoderClassic( s , dilate,n,s_win )
+```
+Based on code from the book DAFX: Digital Audio Effects, Scond edition, by Udo Zolzer.
+
+**s**: one channel column signal.
+
+**dilate**: integet time dilation factor.
+
+**n**: analysis step size (lower **n** means more overlap between the windows).
+
+**s_win**: window time support.
 
