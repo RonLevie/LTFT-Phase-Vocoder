@@ -12,6 +12,8 @@ Given a signal *s*, the LTFT of *s* is a function that assigns a complex number 
 
 Given a function *F* that assigns a complex number to each (*Time*, *Frequency*, *Oscillations*) triplet, the synthesis LTFT transform adds up all of the LTFT atoms (*Time*, *Frequency*, *Oscillations*)  with the corresponding coefficients *F*(*Time*, *Frequency*, *Oscillations*). This gives an audio signal  *s* with roughly *F* as the LTFT of *s*.
 
+LTFT has an advantage over classical time-frequency representations like the short-time-Fourier-transform (STFT), since the feature space of LTFT is 3D, and the feature space of STFT is 2D. The additional axis of LTFT increases the expressive capacity of the atom system, imroving methods like phase vocoder. To overcome the computational cost entailed by the third axis, LTFT phase vocoder is implemented via a Monte Carlo or quasi Monte Carlo method.
+
 
 ### LTFT phase vocoder
 Given an input signal *s* and a positive integer *d*, the LTFT phase vocoder extracts the coefficients of all atoms *F*(*Time*, *Frequency*, *Oscillations*). Then, *F* is dilated along the *Time* direction by *F*(*d Time*, *Frequency*, *Oscillations*), and its complex phases are modified, to obtain a dilated version *H* of *F* (see the paper for more details). Last, *H* is synthesized to an output signal. This output signal is a time-dilated version of *s* that preserves the pitch of *s*. 
