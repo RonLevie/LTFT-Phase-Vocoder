@@ -93,7 +93,30 @@ audiowrite('Dx5STFT.mp4',Dx4STFT,FDD);
 ```
 The resulting audio file: [Dx5STFT.mp4](/Dx5STFT.mp4)
 
-We note that by trial and error on the STFT phse vocoder we found that a window size of 2000 samples gives a good balance between capturing the timber of the guitars and vocals, and avoiding as much phasiness as possible. The LTFT phase vocoder is less sensitive to parameter choice.
+We note that by trial and error on the STFT pahse vocoder we found that a window size of 2000 samples gives a good balance between capturing the timber of the guitars and vocals, and avoiding as much phasiness as possible. The LTFT phase vocoder is less sensitive to parameter choice.
 
 We then consider an extract from the song [Ashes of the Dawn](https://www.youtube.com/watch?v=DFeBkHJUZDg).
+
+[Audio: Ashes of the Dawn extract](/Dragon2.mp4)
+
+We slow down this audio signal by 5.
+
+We compute the LTFT phase vocoder
+```
+[DD FDD]=audioread('Dragon2.mp4');
+D2x5LTFT(:,1) = LTFTVocoder(DD(:,1)',5,15,2000,60,15,6,1.5);
+D2x5LTFT(:,2) = LTFTVocoder(DD(:,2)',5,15,2000,60,15,6,1.5);
+audiowrite('D2x5LTFT.mp4',Dx4LTFT,FDD);
+```
+The resulting audio file: [D2x5LTFT.mp4](/D2x5LTFT.mp4).
+
+To compare with the STFT phase vocoder, we compute
+```
+D2x5STFT(:,1)  = VocoderClassic(DD(:,1),5,5,1500);
+D2x5STFT(:,1)  = VocoderClassic(DD(:,2),5,5,1500);
+audiowrite('Dx5STFT.mp4',Dx4STFT,FDD);
+```
+The resulting audio file: [Dx25STFT.mp4](/2Dx5STFT.mp4).
+
+Again, the window size 1500 for the STFT pahse vocoder we found by trial and error. The LTFT phase vocoder is less sensitive to parameter choice. In this example the LTFT phase vocoder is less aflicted by phasiness artifacts. Moreover, the drum hits in the LTFT method are better isolated.
 
