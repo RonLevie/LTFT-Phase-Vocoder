@@ -63,9 +63,9 @@ Computes the quasi Monte-Carlo or Monte-Carlo integer time stretching phase voco
 ### Usage of classical phase vocoder
 For comparison with the classical integer time dilation phase vocoder, based on the STFT, use
 ```
-DAFx_out = VocoderClassic( s , dilate,n,s_win )
+DAFx_out = VocoderClassic(s,dilate,n,s_win )
 ```
-Based on code from the book DAFX: Digital Audio Effects, Scond edition, by Udo Zolzer.
+Based on code from the book [Udo Zolzer. *DAFX: Digital Audio Effects, Second edition*. Wiley 2011](https://onlinelibrary.wiley.com/doi/book/10.1002/9781119991298).
 
 **s**: one channel column signal.
 
