@@ -29,6 +29,8 @@ To showcase the LTFT phase vocoder, we consider outtakes from songs by the power
 
 We first consider an outtake from the iconic song [Through the Fire and Flames](https://www.youtube.com/watch?v=0jgrCKhxE1s).
 
+[Through the Fire and Flames extract](/Dshort.wav)
+
 ### Usage
 ```
 out = LTFTVocoder(s,dilate,osci,max_supp,min_supp,range,overlap,alpha,quadrature_method)
