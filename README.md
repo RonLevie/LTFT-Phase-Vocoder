@@ -13,7 +13,7 @@ Given a signal *s*, the LTFT of *s* is a function that assigns a complex number 
 
 Given a function *F* that assigns a complex number to each (*Time*, *Frequency*, *Oscillations*) triplet, the synthesis LTFT transform adds up all of the LTFT atoms (*Time*, *Frequency*, *Oscillations*)  with the corresponding coefficients *F*(*Time*, *Frequency*, *Oscillations*). This gives an audio signal  *s* with roughly *F* as the LTFT of *s*.
 
-LTFT has an advantage over classical time-frequency representations like the short-time-Fourier-transform (STFT), since the feature space of LTFT is 3D, and the feature space of STFT is 2D. The additional axis of LTFT increases the expressive capacity of the atom system, imroving methods like phase vocoder. To overcome the increased computational cost entailed by the third axis, LTFT phase vocoder is implemented via a Monte Carlo or quasi Monte Carlo method.
+LTFT has an advantage over classical time-frequency representations like the short-time-Fourier-transform (STFT), since the feature space of LTFT is 3D, and the feature space of STFT is 2D. The additional axis of LTFT increases the expressive capacity of the atom system, improving methods like phase vocoder. To overcome the increased computational cost entailed by the third axis, LTFT phase vocoder is implemented via a Monte Carlo or quasi Monte Carlo method.
 
 
 ### LTFT phase vocoder
@@ -24,8 +24,6 @@ Instead of considering the 3D space of all LTFT atoms, the LTFT phase vocoder me
 LTFT phase vocoder is beneficial for processing polyphonic audio signals, since its 3D feature space is well equipped for represent a range of audio features, from transient events to harmonic features.
 
 ## Examples and usage
-To showcase the LTFT phase vocoder, we consider outtakes from songs by the power metal band [DragonForce](https://en.wikipedia.org/wiki/DragonForce). The overall sound of the band, and specifically the electric guitars with distortion, together with the lyrics and fast paced drumming, consitute highly polyphonic audio signals. LTFT phase vocoder is able to accomodate the different audio features via the *oscillation* axis. Moreover, since LTFT is based on wavelet atoms, which are more localized in time than STFT atoms, phasiness is aleviated with respect to classical phase vocoder.   
+To showcase the LTFT phase vocoder, we consider outtakes from songs by the power metal band [DragonForce](https://en.wikipedia.org/wiki/DragonForce). The overall sound of the band, and specifically the electric guitars with distortion, together with the lyrics and fast paced drumming, constitutes highly polyphonic audio signals. LTFT phase vocoder can accommodate the different audio features simultaneously via the *oscillation* axis. Moreover, since LTFT is based on wavelet atoms, which are more localized in time than STFT atoms, phasiness is alleviated with respect to classical phase vocoder.   
 
 We first consider an outtake from the iconic song [Through the Fire and Flames](https://www.youtube.com/watch?v=0jgrCKhxE1s).
-
-
