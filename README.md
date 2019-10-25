@@ -79,8 +79,8 @@ We slow down this audio signal by 5.
 We compute the LTFT phase vocoder
 ```
 [DD FDD]=audioread('Dragon1.mp4');
-Dx5LTFT(:,1) = LTFTVocoder(DD(:,1)',5,15,2000,60,15,6,1.5);
-Dx5LTFT(:,2) = LTFTVocoder(DD(:,2)',5,15,2000,60,15,6,1.5);
+Dx5LTFT(:,1) = LTFTVocoder(DD(:,1),5,15,2000,60,15,6,1.5);
+Dx5LTFT(:,2) = LTFTVocoder(DD(:,2),5,15,2000,60,15,6,1.5);
 audiowrite('Dx5LTFT.mp4',Dx4LTFT,FDD);
 ```
 The resulting audio file: [Dx5LTFT.mp4](/Dx5LTFT.mp4)
@@ -104,8 +104,8 @@ We slow down this audio signal by 5.
 We compute the LTFT phase vocoder
 ```
 [DD FDD]=audioread('Dragon2.mp4');
-D2x5LTFT(:,1) = LTFTVocoder(DD(:,1)',5,15,2000,60,15,6,1.5);
-D2x5LTFT(:,2) = LTFTVocoder(DD(:,2)',5,15,2000,60,15,6,1.5);
+D2x5LTFT(:,1) = LTFTVocoder(DD(:,1),5,15,2000,60,15,6,1.5);
+D2x5LTFT(:,2) = LTFTVocoder(DD(:,2),5,15,2000,60,15,6,1.5);
 audiowrite('D2x5LTFT.mp4',Dx4LTFT,FDD);
 ```
 The resulting audio file: [D2x5LTFT.mp4](/D2x5LTFT.mp4).
@@ -118,5 +118,5 @@ audiowrite('Dx5STFT.mp4',Dx4STFT,FDD);
 ```
 The resulting audio file: [D2x5STFT.mp4](/D2x5STFT.mp4).
 
-Again, the window size 1500 for the STFT pahse vocoder we found by trial and error. The LTFT phase vocoder is less sensitive to parameter choice. In this example the LTFT phase vocoder is less aflicted by phasiness artifacts. Moreover, the drum hits in the LTFT method are better isolated.
+Again, the window size 1500 for the STFT pahse vocoder was found by trial and error. In this example the LTFT phase vocoder is less aflicted by phasiness artifacts. Moreover, the drum hits in the LTFT method are better isolated.
 
