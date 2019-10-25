@@ -5,7 +5,7 @@ For more information see the paper [Stochastic Phase Space Signal Processing wit
 
 ## The LTFT phase vocoder method
 ### The localizing-time-frequency-transform
-The LTFT decomposes audio signals to a linear combination of simple instantaneous frequency atoms, that we call LTFT atoms. Each LTFT atom is specified by three parameters: *Time*, *Frequency*, and *Oscillations*. Each atom is a short bump in the time axis, centered about a certain time location called the *Time* of the atom, modulated by oscillations of a certain frequency called the *Frequency* of the atom. The *Oscillations* parameters determines how many oscillations there are in the atom. This means that the interval on which the atom is supported is proportional to *Oscillations/Frequency*. 
+The LTFT decomposes audio signals to a linear combination of simple instantaneous frequency atoms, that we call LTFT atoms. Each LTFT atom is specified by three parameters: *Time*, *Frequency*, and *Oscillations*. Each atom is a short bump in the time axis, centered about a certain time location called the *Time* of the atom, modulated by oscillations at a certain frequency called the *Frequency* of the atom. The *Oscillations* parameters determines the number of oscillations in the atom. This means that the interval on which the atom is supported is proportional to *Oscillations/Frequency*. 
 
 The LTFT representation is determined by two additional constants, *MaxSupport* and *MinSupport*. Any atom that is supported on a larger time interval than *MaxSupport*, or shorter time interval than *MinSupport*, is replaced by an atom of time support *MaxSupport* or *MinSupport* respectively.
 
@@ -24,6 +24,36 @@ Instead of considering the 3D space of all LTFT atoms, the LTFT phase vocoder me
 LTFT phase vocoder is beneficial for processing polyphonic audio signals, since its 3D feature space is well equipped for represent a range of audio features, from transient events to harmonic features.
 
 ## Examples and usage
+### Audio examples
 To showcase the LTFT phase vocoder, we consider outtakes from songs by the power metal band [DragonForce](https://en.wikipedia.org/wiki/DragonForce). The overall sound of the band, and specifically the electric guitars with distortion, together with the lyrics and fast paced drumming, constitutes highly polyphonic audio signals. LTFT phase vocoder can accommodate the different audio features simultaneously via the *oscillation* axis. Moreover, since LTFT is based on wavelet atoms, which are more localized in time than STFT atoms, [phasiness](https://www.researchgate.net/publication/3714372_Phase-vocoder_about_this_phasiness_business) is alleviated with respect to classical phase vocoder.   
 
 We first consider an outtake from the iconic song [Through the Fire and Flames](https://www.youtube.com/watch?v=0jgrCKhxE1s).
+
+### Usage
+```
+out = LTFTVocoder(s,dilate,osci,max_supp,min_supp,range,overlap,alpha,quadrature_method)
+```
+Computes the quasi Monte-Carlo or Monte-Carlo integer time stretching phase vocoder, based on the localizing time-frequency transform.
+#### Output variable
+
+**out**: one channel real valued audio signal.
+
+#### Input variables
+**s**: the input single channel real valued signal as a column vector.
+
+**dilate**: the integer stretching amount.
+
+**osci**: the number of oscillations inside the wavelet atoms.
+
+**max_supp**: the upper bound on window time support.
+
+**min_supp**: the lower bound on window time support.
+
+**range**: determines the range of supports of the atoms.  The basic support of each atom at frequency **freq** is **supp=1+osci/(freq/pi+50/N)** where **N** is the number of time samples of the signal **s**. This basic support is extended according to **range** to the support **range (1+1/range)supp**
+
+**overlap**: determines the number of atoms in the method. The number of atoms is **M=N dilate overlap**.
+
+**alpha**: controls the distribution of supports. The greater **alpha** is, the more likely it is to pick small supports.
+
+**quadrature_method**: a string, if equal to 'MonteCarlo' the quadrature points are random, else the quadrature points are quasi-random.
+
