@@ -116,7 +116,7 @@ D2x5STFT(:,1)  = VocoderClassic(DD(:,1),5,5,1500);
 D2x5STFT(:,1)  = VocoderClassic(DD(:,2),5,5,1500);
 audiowrite('Dx5STFT.mp4',Dx4STFT,FDD);
 ```
-The resulting audio file: [Dx25STFT.mp4](/2Dx5STFT.mp4).
+The resulting audio file: [D2x5STFT.mp4](/D2x5STFT.mp4).
 
 Again, the window size 1500 for the STFT pahse vocoder we found by trial and error. The LTFT phase vocoder is less sensitive to parameter choice. In this example the LTFT phase vocoder is less aflicted by phasiness artifacts. Moreover, the drum hits in the LTFT method are better isolated.
 
