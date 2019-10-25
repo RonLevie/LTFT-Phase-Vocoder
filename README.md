@@ -46,7 +46,7 @@ Dx4STFT(:,1)  = VocoderClassic(DD(:,1),5,5,2000);
 Dx4STFT(:,1)  = VocoderClassic(DD(:,2),5,5,2000);
 audiowrite('Dx4STFT.mp4',Dx4STFT,FDD);
 ```
-The resulting audio file: [Dx4STFT.mp4](/Dx4LTFT.mp4)
+The resulting audio file: [Dx4STFT.mp4](/Dx4STFT.mp4)
 
 We note that by trial and error on the STFT phse vocoder we found that a window size of 2000 samples gives a good balance between capturing the timber of the guitars and vocals, and avoiding as much phasiness as possible. The LTFT phase vocoder is less sensitive to parameter choice.
 
