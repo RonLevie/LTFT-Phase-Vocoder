@@ -133,7 +133,7 @@ Gx3LTFT(:,1) = LTFTVocoder(DD(:,1),3,15,2000,60,15,6,1.5);
 Gx3LTFT(:,2) = LTFTVocoder(DD(:,2),3,15,2000,60,15,6,1.5);
 audiowrite('Gx3LTFT',Gx3LTFT,FDD);
 ```
-The resulting audio file: [Gx5LTFT.mp4](/Gx5LTFT.mp4).
+The resulting audio file: [Gx3LTFT.mp4](/Gx3LTFT.mp4).
 
 To compare with the STFT phase vocoder, we compute
 ```
