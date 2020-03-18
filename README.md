@@ -44,7 +44,7 @@ Computes the quasi Monte-Carlo or Monte-Carlo integer time stretching phase voco
 
 **min_supp**: the lower bound on window time support.
 
-**range**: determines the range of supports of the atoms.  The basic support of each atom at frequency **freq** is **supp=1+osci/(freq/pi+50/N)** where **N** is the number of time samples of the signal **s**. This basic support is extended according to **range** to the support **range (1+1/range)supp**
+**range**: determines the range of supports of the atoms.  The basic support of each atom at frequency **freq** is **supp=1+osci/(freq/pi+50/N)** where **N** is the number of time samples of the signal **s**. This basic support is extended according to **range** to the support **range0 (1+1/range0)supp** where **range0** is sampled randomly/quasi-randomly between 0 and **range**.
 
 **overlap**: determines the number of atoms in the method. The number of atoms is **M=N dilate overlap**.
 
