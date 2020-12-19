@@ -1,7 +1,13 @@
 # LTFT-Phase-Vocoder
 LTFT-Phase-Vocoder is an audio effect that slows down an audio signal without dilating its frequency content or pitch.
 The classical phase vocoder is based on the short-time-Fourie-transform (STFT) as the time-frequency representation of the phase vocoder. LTFT Phase Vocoder is based on a novel time-frequency representation called the localizing-time-frequency-transform (LTFT).
-For more information see the paper [Stochastic Phase Space Signal Processing with Application to Localizing Phase Vocoder](https://arxiv.org/abs/1808.08810).
+For more information see the papers :
+
+[Randomized Signal Processing with Continuous Frames](https://arxiv.org/abs/1808.08810)
+
+[Randomized Continuous Frames in Time-Frequency Analysis](https://arxiv.org/abs/2009.10525)
+
+[Quasi Monte Carlo Time-Frequency Analysis](https://arxiv.org/abs/2011.02025)
 
 ## The LTFT phase vocoder method
 ### The localizing-time-frequency-transform
@@ -21,7 +27,7 @@ Given an input signal *s* and a positive integer *d*, the LTFT phase vocoder ext
 
 Instead of considering the 3D space of all LTFT atoms, the LTFT phase vocoder method is implemented via a Monte-Carlo or quasi Monte-Carlo method, using only a random or quasi random set of LTFT atoms. The number of random atoms needed for high fidelity outputs is proportional to the number of time samples, or resolution, of the input signal.
 
-LTFT phase vocoder is beneficial for processing polyphonic audio signals, since its 3D feature space is well equipped for represent a range of audio features, from transient events to harmonic features.
+LTFT phase vocoder is beneficial for processing polyphonic audio signals, since its 3D feature space is well equipped for representing a range of audio features, from transient events to harmonic features.
 
 ## Usage
 ### Usage of LTFT phase vocoder
